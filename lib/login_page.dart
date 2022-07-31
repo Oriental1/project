@@ -1,6 +1,6 @@
-// ignore_for_file: deprecated_member_use
-
 import 'package:flutter/material.dart';
+import 'package:project/ProfileDetails/entreprofile.dart';
+import 'package:project/home/home.dart';
 
 class LoginPage extends StatefulWidget {
   const LoginPage({Key? key}) : super(key: key);
@@ -19,6 +19,8 @@ class _LoginPageState extends State<LoginPage> {
           child: Column(
             mainAxisAlignment: MainAxisAlignment.center,
             children: [
+
+              //Header
               const Text(
                 'Furniture Shop',
                 style: TextStyle(
@@ -36,7 +38,7 @@ class _LoginPageState extends State<LoginPage> {
               ),
               const SizedBox(height: 15),
 
-
+              //phone number
               Padding(
                 padding: const EdgeInsets.symmetric(horizontal: 15.0),
                 child: Container(
@@ -63,7 +65,6 @@ class _LoginPageState extends State<LoginPage> {
 
 
               // password TextField
-
               Padding(
                 padding: const EdgeInsets.symmetric(horizontal: 15.0),
                 child: Container(
@@ -87,23 +88,24 @@ class _LoginPageState extends State<LoginPage> {
               ),
               const SizedBox(height: 15),
 
-              // Sign in button
-
+              // login button
               Padding(
-                padding: const EdgeInsets.symmetric(horizontal: 10.0),
-                
+                padding: const EdgeInsets.symmetric(horizontal: 10.0),                
                 child: Container(
-                    
-              margin: const EdgeInsets.all(15),  
-              child: FlatButton(  
-                color: Colors.blueAccent,  
-                textColor: Colors.white,  
-                onPressed: () {},  
-                child: const Text('Log in', style: TextStyle(fontSize: 20.0),),  
-              ),  
-            ),  
-          ),
+                  margin: const EdgeInsets.all(15),
+                  child: ElevatedButton(  
+                    onPressed: ()=> Navigator.push(
+                        context,
+                        MaterialPageRoute(
+                          builder: (context) => const Home(),
+                        ),
+                      ),  
+                    child: const Text('Log in', style: TextStyle(fontSize: 20.0),),  
+                  ),  
+                ),  
+              ),
 
+              //sign in
               Row(
                 mainAxisAlignment: MainAxisAlignment.center,
                 children: [
@@ -114,14 +116,20 @@ class _LoginPageState extends State<LoginPage> {
                     ),
                   ),
                   TextButton(
-            style: TextButton.styleFrom(
-              textStyle: const TextStyle(fontSize: 15, color: Colors.black,),
-            ),
-            onPressed: () {},
-            child: const Text('Sign In'),
-          ),
+                    style: TextButton.styleFrom(
+                      textStyle: const TextStyle(fontSize: 15, color: Colors.black,),
+                    ),
+                      onPressed: ()=> Navigator.push(
+                        context,
+                        MaterialPageRoute(
+                          builder: (context) => const Profile(),
+                        ),
+                      ), 
+                      child: const Text('Sign In'),
+                  ),
                 ],
               ),
+
             ],
           ),
         ),
