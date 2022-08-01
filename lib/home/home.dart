@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:project/Form/form.dart';
 import 'package:project/Profile/profile.dart';
 import 'package:project/Service%20Centre/servicecentre.dart';
 import 'package:project/login_page.dart';
@@ -25,24 +26,46 @@ class Home extends StatelessWidget {
             child: const Text('Home'),
             onPressed: () {},
           ),
-            FittedBox(
+
+          //Service Center
+          FittedBox(
+            child: TextButton(
+                onPressed: () => Navigator.push(
+                      context,
+                      MaterialPageRoute(
+                        builder: (context) => const Service(),
+                      ),
+                    ), 
+                child: Row(
+                  children: const [
+                    Text(
+                      "Service Centre", style: TextStyle(fontSize: 20, fontWeight: FontWeight.w500),
+                    ),
+                  ],
+                )
+                ),
+          ),
+
+          //Service Form
+          FittedBox(
               child: TextButton(
                   onPressed: () => Navigator.push(
                         context,
                         MaterialPageRoute(
-                          builder: (context) => const Service(),
+                          builder: (context) => const FormScreen(),
                         ),
                       ), 
                   child: Row(
                     children: const [
                       Text(
-                        "Service Centre", style: TextStyle(fontSize: 20, fontWeight: FontWeight.w500),
+                        "Service Center Form", style: TextStyle(fontSize: 20, fontWeight: FontWeight.w500),
                       ),
                     ],
                   )
                   ),
             ),
-            
+
+          //Profile  
           FittedBox(
               child: TextButton(
                   onPressed: () => Navigator.push(

@@ -1,9 +1,8 @@
+// ignore_for_file: no_leading_underscores_for_local_identifiers, avoid_print, duplicate_ignore
+
 import 'package:firebase_auth/firebase_auth.dart';
-import 'package:firebase_core/firebase_core.dart';
 import 'package:flutter/material.dart';
-import 'package:project/Profile/profile.dart';
 import 'package:project/ProfileDetails/entreprofile.dart';
-import 'package:project/home/home.dart';
 
 class LoginPage extends StatefulWidget {
   const LoginPage({Key? key}) : super(key: key);
@@ -77,9 +76,8 @@ class _LoginPageState extends State<LoginPage> {
                     padding: const EdgeInsets.only(left: 10.0),
                     child: TextField(
                       controller: _emailController,
-                      
                       decoration: const InputDecoration(
-                        prefixIcon: Icon(Icons.call),
+                        prefixIcon: Icon(Icons.email),
                         border: InputBorder.none,
                         hintText: 'Email',
                       ),

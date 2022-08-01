@@ -1,98 +1,178 @@
-// ignore_for_file: deprecated_member_use
+// ignore_for_file: avoid_print
+
 import 'package:flutter/material.dart';
 
-class MyForm extends StatelessWidget {
-  const MyForm({Key? key}) : super(key: key);
+class FormScreen extends StatefulWidget {
+  const FormScreen({Key? key}) : super(key: key);
 
   @override
-  Widget build(BuildContext context) {
-    return const Scaffold(
-      body: MyCustomForm(),
+  State<StatefulWidget> createState() {
+    return FormScreenState();
+  }
+}
+
+class FormScreenState extends State<FormScreen> {
+  late String _username; //username
+  late String _serv; //servicecenter
+  late int _contact; //conctact
+  late String _tof; //Type of furniture
+  late int _exnodays; //expected number of days
+  late String _serdes; //service Description
+
+  final GlobalKey<FormState> _formKey = GlobalKey<FormState>();
+
+//username
+  Widget _buildUsername() {
+    return TextFormField(
+      decoration: const InputDecoration(labelText: 'Username'),
+      validator: (value) {
+        if (value!.isEmpty) {
+          return 'UserName is Required';
+        }
+        return null;
+      },
+      onSaved: (value) {
+        _username = value!;
+      },
     );
   }
-}
+//servicecenter
+  Widget _buildServiceCenter() {
+    return TextFormField(
+      decoration: const InputDecoration(labelText: 'Service Center Username'),
+      validator: (value) {
+        if (value!.isEmpty) {
+          return 'Service Center Username is Required';
+        }
 
-// Create a Form widget.
-class MyCustomForm extends StatefulWidget {
-  const MyCustomForm({Key? key}) : super(key: key);
-
-  @override
-  MyCustomFormState createState() {
-    return MyCustomFormState();
+        if (value.isEmpty) {
+          return 'Service Center UserName is Required';
+        }
+        return null;
+      },
+      onSaved: (value) {
+        _serv = value!;
+      },
+    );
   }
-}
 
-// Create a corresponding State class, which holds data related to the form.
-class MyCustomFormState extends State<MyCustomForm> {
-  // Create a global key that uniquely identifies the Form widget
-  // and allows validation of the form.
-  final _formKey = GlobalKey<FormState>();
+  //Contact
+  Widget _buildPhoneNumber() {
+    return TextFormField(
+      decoration: const InputDecoration(labelText: 'Phone number'),
+      keyboardType: TextInputType.phone,
+      maxLength: 10,
+      validator: (value) {
+        if (value!.isEmpty) {
+          return 'Phone number is Required';
+        }
+
+        return null;
+      },
+      onSaved: (value) {
+        _contact = value! as int;
+      },
+    );
+  }
+
+  //type of furniture
+  Widget _buildTOF() {
+    return TextFormField(
+      decoration: const InputDecoration(labelText: 'Type of Furniure'),
+      keyboardType: TextInputType.visiblePassword,
+      validator: (value) {
+        if (value!.isEmpty) {
+          return 'Type of Furniture field is Required';
+        }
+
+        return null;
+      },
+      onSaved: (value) {
+        _tof = value!;
+      },
+    );
+  }
+
+  //Contact
+  Widget _buildNOD() {
+    return TextFormField(
+      decoration: const InputDecoration(labelText: 'Expected number of days to be finished'),
+      keyboardType: TextInputType.phone,
+      maxLength: 3,
+      validator: (value) {
+        if (value!.isEmpty) {
+          return 'Please suggest an expected number of days to be finished';
+        }
+        return null;
+      },
+      onSaved: (value) {
+        _contact = value! as int;
+      },
+    );
+  }
+
+  //Description
+  Widget _buildDescription() {
+    return TextFormField(
+      decoration: const InputDecoration(labelText: 'What to buy/make or repair. If any, suggest!!!'),
+      keyboardType: TextInputType.visiblePassword,
+      validator: (value) {
+        if (value!.isEmpty) {
+          return 'Please suggest about your visit';
+        }
+        return null;
+      },
+      onSaved: (value) {
+        _tof = value!;
+      },
+    );
+  }
+
 
   @override
   Widget build(BuildContext context) {
-    // Build a Form widget using the _formKey created above.
-    return Form(
-      key: _formKey,
-      child: Center(
-        child: Column(
-          crossAxisAlignment: CrossAxisAlignment.start,
-          children: <Widget>[
-            TextFormField(
-              decoration: const InputDecoration(
-                icon: Icon(Icons.person),
-                hintText: 'Enter your User name',
-                labelText: 'User Name',
-              ),
-              validator: (value) {
-                if (value!.isEmpty) {
-                  return 'Please enter an existing User Name';
-                }
-                return null;
-              },
-            ),
-            TextFormField(
-              keyboardType: TextInputType.phone,
-              decoration: const InputDecoration(
-                icon: Icon(Icons.phone),
-                border: InputBorder.none,
-                hintText: 'Enter a phone number',
-                labelText: 'Phone Number',
-              ),
-              validator: (value) {
-                if (value!.isEmpty) {
-                  return 'Please enter valid phone number';
-                }
-                return null;
-              },
-            ),
-            TextFormField(
-              decoration: const InputDecoration(
-                hintText: "Furniture's type",
-                labelText: "Please put a Furniture's type",
-              ),
-              validator: (value) {
-                if (value!.isEmpty) {
-                  return 'Please do not leave this field empty';
-                }
-                return null;
-              },
-            ),
-            Container(
-                padding: const EdgeInsets.only(left: 150.0, top: 40.0),
-                child: RaisedButton(
-                  child: const Text('Submit'),
+    return Scaffold(
+      appBar: AppBar(title: const Text("Service Center Form")),
+      body: SingleChildScrollView(
+        child: Container(
+          margin: const EdgeInsets.all(24),
+          child: Form(
+            key: _formKey,
+            child: Column(
+              mainAxisAlignment: MainAxisAlignment.center,
+              children: <Widget>[
+                _buildUsername(),
+                _buildServiceCenter(),
+                _buildPhoneNumber(),
+                _buildTOF(),
+                _buildNOD(),
+                _buildDescription(),
+                const SizedBox(height: 100),
+                OutlinedButton(
+                  child: const Text(
+                    'Submit',
+                    style: TextStyle(color: Colors.blue, fontSize: 16),
+                  ),
                   onPressed: () {
-                    // It returns true if the form is valid, otherwise returns false
-                    if (_formKey.currentState!.validate()) {
-                      // If the form is valid, display a Snackbar.
-                      Scaffold.of(context).showSnackBar(const SnackBar(
-                          content: Text('Data is in processing.')
-                        )
-                      );
+                    if (!_formKey.currentState!.validate()) {
+                      return;
                     }
+
+                    _formKey.currentState!.save();
+
+                    print(_username);
+                    print(_contact);
+                    print(_tof);
+                    print(_exnodays);
+                    print(_serdes);
+                    print(_serv);
+
+                    //Send to API
                   },
-                )),
-          ],
+                )
+              ],
+            ),
+          ),
         ),
       ),
     );

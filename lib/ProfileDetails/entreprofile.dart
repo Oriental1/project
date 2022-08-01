@@ -99,8 +99,8 @@ class _ProfileState extends State<Profile> {
                       keyboardType: TextInputType.number,
                       decoration: InputDecoration(
                         border: InputBorder.none,
-                        hintText: 'Contact',
-                      ),
+                        hintText: 'Contact'
+                      )
                     ),
                   ),
                 ),
@@ -155,7 +155,7 @@ class _ProfileState extends State<Profile> {
               Padding(
                 padding: const EdgeInsets.symmetric(horizontal: 15.0),
                 child: Container(
-                  height: 96,
+                  height: 64,
                   decoration: BoxDecoration(
                     color: Colors.grey[200],
                     border: Border.all(color: Colors.white),
@@ -175,36 +175,35 @@ class _ProfileState extends State<Profile> {
 
               const SizedBox(height: 50),
 
-              Wrap(
-                children: <Widget> [
-                  //back button
-                  TextButton(
-                    child: const Text(
-                      'Back',
-                      style: TextStyle(fontSize: 24, fontWeight: FontWeight.bold),
-                    ),
-                    onPressed: () => Navigator.push(
-                        context,
-                        MaterialPageRoute(
-                          builder: (context) => const LoginPage(),
-                        ),
-                      ),
+              Wrap(children: <Widget>[
+                //back button
+                TextButton(
+                  child: const Text(
+                    'Back',
+                    style: TextStyle(fontSize: 24, fontWeight: FontWeight.bold),
                   ),
+                  onPressed: () => Navigator.push(
+                    context,
+                    MaterialPageRoute(
+                      builder: (context) => const LoginPage(),
+                    ),
+                  ),
+                ),
 
-                  const SizedBox(width: 100),
-                  
-                  //next button
-                  TextButton(
-                    child: const Text(
-                      'Next',
-                      style: TextStyle(fontSize: 24, fontWeight: FontWeight.bold),
+                const SizedBox(width: 100),
+
+                //next button
+                TextButton(
+                  child: const Text(
+                    'Next',
+                    style: TextStyle(fontSize: 24, fontWeight: FontWeight.bold),
                     ),
                     onPressed: () => Navigator.push(
-                        context,
-                        MaterialPageRoute(
-                          builder: (context) => const Usertype(),
-                        ),
+                      context,
+                      MaterialPageRoute(
+                      builder: (context) => const Usertype(),
                       ),
+                    ),
                   ),
                 ]
               )
