@@ -42,14 +42,7 @@ class Home extends StatelessWidget {
                   )
                   ),
             ),
-            TextButton(
-            style: TextButton.styleFrom(
-              textStyle: const TextStyle(fontSize: 20, fontWeight: FontWeight.w500),
-            ),
-            onPressed: () {},
-            child: const Text('Service History',),
-          ),
-
+            
           FittedBox(
               child: TextButton(
                   onPressed: () => Navigator.push(

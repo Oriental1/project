@@ -13,7 +13,8 @@ class Service extends StatelessWidget {
     return Scaffold(
       appBar: AppBar(
         title: const Text(
-          'Chat',
+          
+          'Service Centre', 
         ),
         elevation: 0,
         actions: <Widget>[
@@ -38,57 +39,50 @@ class HomeController extends GetxController {
   List<UserData> data = [
     UserData(
         name: 'David Skyrius',
-        age: 27,
-        addr: 'Los Angeles',
+        contact: 1234567890,
         profilePic:
             'https://images.pexels.com/photos/2129796/pexels-photo-2129796.png?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=1'),
     UserData(
         name: 'Drew Williams',
-        age: 21,
-        addr: 'Canada',
+        contact: 2134567890,
         profilePic:
             'https://images.pexels.com/photos/3568520/pexels-photo-3568520.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=1'),
     UserData(
         name: 'Andy Vu',
-        age: 18,
-        addr: 'Argentina',
+        contact: 1812345825,
         profilePic:
             'https://images.pexels.com/photos/3244513/pexels-photo-3244513.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=1'),
     UserData(
         name: 'Roberto Nickson',
-        age: 26,
-        addr: 'Miami',
+        contact: 26452185285,
         profilePic:
             'https://images.pexels.com/photos/2775196/pexels-photo-2775196.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=1'),
     UserData(
         name: 'Aidan Roof',
-        age: 23,
-        addr: 'New York',
+        contact: 23654654218,
         profilePic:
             'https://images.pexels.com/photos/2449600/pexels-photo-2449600.png?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=1'),
     UserData(
         name: 'Mayu',
-        age: 24,
-        addr: 'Thailand',
+        contact: 24656458789,
         profilePic:
             'https://images.pexels.com/photos/6348820/pexels-photo-6348820.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=1'),
     UserData(
         name: 'Scott Webb',
-        age: 45,
-        addr: 'Iceland',
+        contact: 4556464565,
         profilePic:
             'https://images.pexels.com/photos/1029599/pexels-photo-1029599.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=1'),
     UserData(
         name: 'Stephan Seeber',
-        age: 32,
-        addr: 'London',
+        contact: 3265764885,
         profilePic:
             'https://images.pexels.com/photos/1054218/pexels-photo-1054218.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=1'),
     UserData(
         name: 'Sebastian Voortman',
-        age: 19,
-        addr: 'Russia',
+        contact: 1945641318,
         profilePic:
             'https://images.pexels.com/photos/189349/pexels-photo-189349.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=1'),
   ];
 }
+
+

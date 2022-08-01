@@ -189,22 +189,6 @@ class _ProfiledetailsState extends State<Profiledetails> {
                         ),
                       ),
                   ),
-
-                  const SizedBox(width: 100),
-                  
-                  //next button
-                  TextButton(
-                    child: const Text(
-                      'Edit',
-                      style: TextStyle(fontSize: 24, fontWeight: FontWeight.bold),
-                    ),
-                    onPressed: () => Navigator.push(
-                        context,
-                        MaterialPageRoute(
-                          builder: (context) => const Home(),
-                        ),
-                      ),
-                  ),
                 ]
               )
             ],

@@ -1,177 +1,98 @@
+// ignore_for_file: deprecated_member_use
 import 'package:flutter/material.dart';
 
-class MyForm extends StatefulWidget {
+class MyForm extends StatelessWidget {
   const MyForm({Key? key}) : super(key: key);
 
   @override
-  State<StatefulWidget> createState() {
-    return MyFormState();
+  Widget build(BuildContext context) {
+    return const Scaffold(
+      body: MyCustomForm(),
+    );
   }
 }
 
-class MyFormState extends State<MyForm> {
-  late String _name;
-  late String _email;
-  late String _password;
-  late String _url;
-  late String _phoneNumber;
-  late String _calories;
+// Create a Form widget.
+class MyCustomForm extends StatefulWidget {
+  const MyCustomForm({Key? key}) : super(key: key);
 
-  final GlobalKey<FormState> _formKey = GlobalKey<FormState>();
-
-  Widget _buildName() {
-    return TextFormField(
-      decoration: InputDecoration(labelText: 'Name'),
-      maxLength: 10,
-      validator: (String value) {
-        if (value.isEmpty) {
-          return 'Name is Required';
-        }
-
-        return null;
-      },
-      onSaved: (String value) {
-        _name = value;
-      },
-    );
+  @override
+  MyCustomFormState createState() {
+    return MyCustomFormState();
   }
+}
 
-  Widget _buildEmail() {
-    return TextFormField(
-      decoration: InputDecoration(labelText: 'Email'),
-      validator: (String value) {
-        if (value.isEmpty) {
-          return 'Email is Required';
-        }
-
-        if (!RegExp(
-                r"[a-z0-9!#$%&'*+/=?^_`{|}~-]+(?:\.[a-z0-9!#$%&'*+/=?^_`{|}~-]+)*@(?:[a-z0-9](?:[a-z0-9-]*[a-z0-9])?\.)+[a-z0-9](?:[a-z0-9-]*[a-z0-9])?")
-            .hasMatch(value)) {
-          return 'Please enter a valid email Address';
-        }
-
-        return null;
-      },
-      onSaved: (String value) {
-        _email = value;
-      },
-    );
-  }
-
-  Widget _buildPassword() {
-    return TextFormField(
-      decoration: InputDecoration(labelText: 'Password'),
-      keyboardType: TextInputType.visiblePassword,
-      validator: (String value) {
-        if (value.isEmpty) {
-          return 'Password is Required';
-        }
-
-        return null;
-      },
-      onSaved: (String value) {
-        _password = value;
-      },
-    );
-  }
-
-  Widget _builURL() {
-    return TextFormField(
-      decoration: InputDecoration(labelText: 'Url'),
-      keyboardType: TextInputType.url,
-      validator: (String value) {
-        if (value.isEmpty) {
-          return 'URL is Required';
-        }
-
-        return null;
-      },
-      onSaved: (String value) {
-        _url = value;
-      },
-    );
-  }
-
-  Widget _buildPhoneNumber() {
-    return TextFormField(
-      decoration: InputDecoration(labelText: 'Phone number'),
-      keyboardType: TextInputType.phone,
-      validator: (String value) {
-        if (value.isEmpty) {
-          return 'Phone number is Required';
-        }
-
-        return null;
-      },
-      onSaved: (String value) {
-        _url = value;
-      },
-    );
-  }
-
-  Widget _buildCalories() {
-    return TextFormField(
-      decoration: InputDecoration(labelText: 'Calories'),
-      keyboardType: TextInputType.number,
-      validator: (String value) {
-        int calories = int.tryParse(value);
-
-        if (calories == null || calories <= 0) {
-          return 'Calories must be greater than 0';
-        }
-
-        return null;
-      },
-      onSaved: (String value) {
-        _calories = value;
-      },
-    );
-  }
+// Create a corresponding State class, which holds data related to the form.
+class MyCustomFormState extends State<MyCustomForm> {
+  // Create a global key that uniquely identifies the Form widget
+  // and allows validation of the form.
+  final _formKey = GlobalKey<FormState>();
 
   @override
   Widget build(BuildContext context) {
-    return Scaffold(
-      appBar: AppBar(title: Text("Service Form")),
-      body: SingleChildScrollView(
-        child: Container(
-          margin: EdgeInsets.all(24),
-          child: Form(
-            key: _formKey,
-            child: Column(
-              mainAxisAlignment: MainAxisAlignment.center,
-              children: <Widget>[
-                _buildName(),
-                _buildEmail(),
-                _buildPassword(),
-                _builURL(),
-                _buildPhoneNumber(),
-                _buildCalories(),
-                SizedBox(height: 100),
-                RaisedButton(
-                  child: Text(
-                    'Submit',
-                    style: TextStyle(color: Colors.blue, fontSize: 16),
-                  ),
-                  onPressed: () {
-                    if (!_formKey.currentState.validate()) {
-                      return;
-                    }
-
-                    _formKey.currentState.save();
-
-                    print(_name);
-                    print(_email);
-                    print(_phoneNumber);
-                    print(_url);
-                    print(_password);
-                    print(_calories);
-
-                    //Send to API
-                  },
-                )
-              ],
+    // Build a Form widget using the _formKey created above.
+    return Form(
+      key: _formKey,
+      child: Center(
+        child: Column(
+          crossAxisAlignment: CrossAxisAlignment.start,
+          children: <Widget>[
+            TextFormField(
+              decoration: const InputDecoration(
+                icon: Icon(Icons.person),
+                hintText: 'Enter your User name',
+                labelText: 'User Name',
+              ),
+              validator: (value) {
+                if (value!.isEmpty) {
+                  return 'Please enter an existing User Name';
+                }
+                return null;
+              },
             ),
-          ),
+            TextFormField(
+              keyboardType: TextInputType.phone,
+              decoration: const InputDecoration(
+                icon: Icon(Icons.phone),
+                border: InputBorder.none,
+                hintText: 'Enter a phone number',
+                labelText: 'Phone Number',
+              ),
+              validator: (value) {
+                if (value!.isEmpty) {
+                  return 'Please enter valid phone number';
+                }
+                return null;
+              },
+            ),
+            TextFormField(
+              decoration: const InputDecoration(
+                hintText: "Furniture's type",
+                labelText: "Please put a Furniture's type",
+              ),
+              validator: (value) {
+                if (value!.isEmpty) {
+                  return 'Please do not leave this field empty';
+                }
+                return null;
+              },
+            ),
+            Container(
+                padding: const EdgeInsets.only(left: 150.0, top: 40.0),
+                child: RaisedButton(
+                  child: const Text('Submit'),
+                  onPressed: () {
+                    // It returns true if the form is valid, otherwise returns false
+                    if (_formKey.currentState!.validate()) {
+                      // If the form is valid, display a Snackbar.
+                      Scaffold.of(context).showSnackBar(const SnackBar(
+                          content: Text('Data is in processing.')
+                        )
+                      );
+                    }
+                  },
+                )),
+          ],
         ),
       ),
     );
