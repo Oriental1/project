@@ -3,7 +3,6 @@ import 'package:project/Form/form.dart';
 import 'package:project/model/user_data.dart';
 
 Widget chat(hc) {
-  BuildContext context;
   return ListView(
     children: hc.data
         .map<Widget>((UserData e) => Container(
@@ -67,14 +66,9 @@ Widget chat(hc) {
                     mainAxisAlignment: MainAxisAlignment.end,
                     children: [
                       IconButton(
-                        icon: const Icon(Icons.insert_drive_file),
-                        onPressed: () => Navigator.push(
-                          context,
-                          MaterialPageRoute(
-                            builder: (context) => const MyForm(),
-                          ),
-                        ),
-                      )
+                          icon: const Icon(Icons.insert_drive_file),
+                          onPressed: () {}
+                        )
                     ],
                   ),
                 ],
