@@ -18,19 +18,20 @@ Widget chat(hc) {
                 borderRadius: BorderRadius.all(Radius.circular(10)),
               ),
               child: Row(
-                mainAxisAlignment: MainAxisAlignment.center,
+                mainAxisAlignment: MainAxisAlignment.start,
                 children: <Widget>[
                   Container(
-                    height: 50,
-                    width: 50,
+                    height: 100,
+                    width: 100,
                     decoration: BoxDecoration(
-                      shape: BoxShape.circle,
+                      shape: BoxShape.rectangle,
                       image: DecorationImage(
-                          image: NetworkImage(e.profilePic ?? '')),
+                        fit: BoxFit.fill,
+                        image: NetworkImage(e.profilePic ?? '')
+                      ),
                     ),
-                    child: Container(),
                   ),
-                  const SizedBox(width: 10),
+                  const SizedBox(width: 20),
                   Column(
                       mainAxisAlignment: MainAxisAlignment.center,
                       crossAxisAlignment: CrossAxisAlignment.start,
@@ -60,19 +61,12 @@ Widget chat(hc) {
                             ),
                           ],
                         )
-                      ]),
-                  Column(
-                    mainAxisAlignment: MainAxisAlignment.end,
-                    children: [
-                      IconButton(
-                          icon: const Icon(Icons.insert_drive_file),
-                          onPressed: () {}
-                        )
-                    ],
-                  ),
+                      ]
+                    ),
                 ],
               ),
-            ))
+            )
+          )
         .toList(),
   );
 }

@@ -37,6 +37,8 @@ dependencies:
   get: ^4.6.5
   firebase_core: ^1.20.0
   firebase_auth: ^3.6.1
+  # Firebase Database
+  cloud_firestore: ^3.4.3
   
 
 dev_dependencies:
@@ -91,3 +93,4 @@ flutter:
   #
   # For details regarding fonts from package dependencies,
   # see https://flutter.dev/custom-fonts/#from-packages
+shared_preferences: ^2.0.6

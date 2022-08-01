@@ -13,8 +13,8 @@ class Service extends StatelessWidget {
     return Scaffold(
       appBar: AppBar(
         title: const Text(
-          
-          'Service Centre', 
+          'Service Centre',
+          style: TextStyle(fontSize: 28, fontWeight: FontWeight.w500), 
         ),
         elevation: 0,
         actions: <Widget>[

@@ -1,5 +1,4 @@
 import 'package:flutter/material.dart';
-import 'package:project/home/home.dart';
 
 class Profiledetails extends StatefulWidget {
   const Profiledetails({Key? key}) : super(key: key);
@@ -14,11 +13,13 @@ class _ProfiledetailsState extends State<Profiledetails> {
     return Scaffold(
       resizeToAvoidBottomInset: false,
       backgroundColor: Colors.grey[300],
+      appBar: AppBar(),
       body: SafeArea(
         child: Center(
           child: Column(
-            mainAxisAlignment: MainAxisAlignment.center,
+            mainAxisAlignment: MainAxisAlignment.start,
             children: [
+              const SizedBox(height: 20),
               const Text(
                 'My Profile',
                 style: TextStyle(
@@ -171,26 +172,6 @@ class _ProfiledetailsState extends State<Profiledetails> {
                   ),
                 ),
               ),
-
-              const SizedBox(height: 50),
-
-              Wrap(
-                children: <Widget> [
-                  //back button
-                  TextButton(
-                    child: const Text(
-                      'Back',
-                      style: TextStyle(fontSize: 24, fontWeight: FontWeight.bold),
-                    ),
-                    onPressed: () => Navigator.push(
-                        context,
-                        MaterialPageRoute(
-                          builder: (context) => const Home(),
-                        ),
-                      ),
-                  ),
-                ]
-              )
             ],
           ),
         ),

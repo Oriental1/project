@@ -2,7 +2,10 @@ import 'package:firebase_core/firebase_core.dart';
 import 'package:flutter/material.dart';
 import 'login_page.dart';
 
-void main() {
+Future main() async {
+  WidgetsFlutterBinding.ensureInitialized();
+  await Firebase.initializeApp();
+  
   runApp(const MyApp());
 }
 
@@ -38,8 +41,7 @@ class LoginPageState extends State<LoginPage> {
             return const Center(
               child: CircularProgressIndicator(),
             );
-          }
-        ),
+          }),
     );
   }
 }
