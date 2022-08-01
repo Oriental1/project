@@ -63,7 +63,7 @@ class _LoginPageState extends State<LoginPage> {
               ),
               const SizedBox(height: 15),
 
-              //email
+              //username
               Padding(
                 padding: const EdgeInsets.symmetric(horizontal: 15.0),
                 child: Container(
@@ -77,9 +77,9 @@ class _LoginPageState extends State<LoginPage> {
                     child: TextField(
                       controller: _emailController,
                       decoration: const InputDecoration(
-                        prefixIcon: Icon(Icons.email),
+                        prefixIcon: Icon(Icons.person),
                         border: InputBorder.none,
-                        hintText: 'Email',
+                        hintText: 'Username',
                       ),
                     ),
                   ),

@@ -12,11 +12,6 @@ class _UsertypeState extends State<Usertype> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      appBar: AppBar(
-        iconTheme: Theme.of(context).iconTheme,
-        backgroundColor: Colors.transparent,
-        elevation: 0,
-      ),
       backgroundColor: Colors.grey[300],
       body: SafeArea(
         child: Center(

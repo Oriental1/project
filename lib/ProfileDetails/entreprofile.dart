@@ -13,6 +13,7 @@ class _ProfileState extends State<Profile> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
+      appBar: AppBar(title: const Text("Create Your Profile")),
       resizeToAvoidBottomInset: false,
       backgroundColor: Colors.grey[300],
       body: SafeArea(
@@ -20,15 +21,7 @@ class _ProfileState extends State<Profile> {
           child: Column(
             mainAxisAlignment: MainAxisAlignment.center,
             children: [
-              const Text(
-                'Entre Profile Details',
-                style: TextStyle(
-                  fontWeight: FontWeight.bold,
-                  fontSize: 40,
-                ),
-              ),
-
-              const SizedBox(height: 30),
+              const SizedBox(height: 20),
 
               const CircleAvatar(
                 radius: 50.0,
@@ -175,27 +168,12 @@ class _ProfileState extends State<Profile> {
 
               const SizedBox(height: 50),
 
-              Wrap(children: <Widget>[
-                //back button
-                TextButton(
-                  child: const Text(
-                    'Back',
-                    style: TextStyle(fontSize: 24, fontWeight: FontWeight.bold),
-                  ),
-                  onPressed: () => Navigator.push(
-                    context,
-                    MaterialPageRoute(
-                      builder: (context) => const LoginPage(),
-                    ),
-                  ),
-                ),
-
-                const SizedBox(width: 100),
+              
 
                 //next button
                 TextButton(
                   child: const Text(
-                    'Next',
+                    'Submit',
                     style: TextStyle(fontSize: 24, fontWeight: FontWeight.bold),
                     ),
                     onPressed: () => Navigator.push(
@@ -206,8 +184,6 @@ class _ProfileState extends State<Profile> {
                     ),
                   ),
                 ]
-              )
-            ],
           ),
         ),
       ),
