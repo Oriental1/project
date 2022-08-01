@@ -1,4 +1,7 @@
+import 'package:firebase_auth/firebase_auth.dart';
+import 'package:firebase_core/firebase_core.dart';
 import 'package:flutter/material.dart';
+import 'package:project/Profile/profile.dart';
 import 'package:project/ProfileDetails/entreprofile.dart';
 import 'package:project/home/home.dart';
 
@@ -10,8 +13,32 @@ class LoginPage extends StatefulWidget {
 }
 
 class _LoginPageState extends State<LoginPage> {
+//
+
+//login function
+  static Future<User?> loginUsingEmailPassword(
+      {required String email,
+      required String password,
+      required BuildContext context}) async {
+    FirebaseAuth auth = FirebaseAuth.instance;
+    User? user;
+    try {
+      UserCredential userCredential = await auth.signInWithEmailAndPassword(
+          email: email, password: password);
+      user = userCredential.user;
+    } on FirebaseAuthException catch (e) {
+      if (e.code == "user-not-found") {
+        print("No User found for that email");
+      }
+    }
+    return user;
+  }
+
   @override
   Widget build(BuildContext context) {
+    //create the textfiled controller
+    TextEditingController _emailController = TextEditingController();
+    TextEditingController _passwordController = TextEditingController();
     return Scaffold(
       backgroundColor: Colors.grey[300],
       body: SafeArea(
@@ -19,7 +46,6 @@ class _LoginPageState extends State<LoginPage> {
           child: Column(
             mainAxisAlignment: MainAxisAlignment.center,
             children: [
-
               //Header
               const Text(
                 'Furniture Shop',
@@ -38,7 +64,7 @@ class _LoginPageState extends State<LoginPage> {
               ),
               const SizedBox(height: 15),
 
-              //phone number
+              //email
               Padding(
                 padding: const EdgeInsets.symmetric(horizontal: 15.0),
                 child: Container(
@@ -47,22 +73,21 @@ class _LoginPageState extends State<LoginPage> {
                     border: Border.all(color: Colors.white),
                     borderRadius: BorderRadius.circular(12),
                   ),
-                  child: const Padding(
-                    padding: EdgeInsets.only(left: 10.0),
+                  child: Padding(
+                    padding: const EdgeInsets.only(left: 10.0),
                     child: TextField(
-                      keyboardType: TextInputType.number,
-                      decoration: InputDecoration(
+                      controller: _emailController,
+                      
+                      decoration: const InputDecoration(
                         prefixIcon: Icon(Icons.call),
                         border: InputBorder.none,
-                        hintText: 'Phone Number',
+                        hintText: 'Email',
                       ),
                     ),
                   ),
                 ),
               ),
               const SizedBox(height: 15),
-
-
 
               // password TextField
               Padding(
@@ -73,11 +98,12 @@ class _LoginPageState extends State<LoginPage> {
                     border: Border.all(color: Colors.white),
                     borderRadius: BorderRadius.circular(12),
                   ),
-                  child: const Padding(
-                    padding: EdgeInsets.only(left: 10.0),
+                  child: Padding(
+                    padding: const EdgeInsets.only(left: 10.0),
                     child: TextField(
+                      controller: _passwordController,
                       obscureText: true,
-                      decoration: InputDecoration(
+                      decoration: const InputDecoration(
                         prefixIcon: Icon(Icons.lock),
                         border: InputBorder.none,
                         hintText: 'Password',
@@ -90,19 +116,31 @@ class _LoginPageState extends State<LoginPage> {
 
               // login button
               Padding(
-                padding: const EdgeInsets.symmetric(horizontal: 10.0),                
+                padding: const EdgeInsets.symmetric(horizontal: 10.0),
                 child: Container(
                   margin: const EdgeInsets.all(15),
-                  child: ElevatedButton(  
-                    onPressed: ()=> Navigator.push(
-                        context,
-                        MaterialPageRoute(
-                          builder: (context) => const Home(),
-                        ),
-                      ),  
-                    child: const Text('Log in', style: TextStyle(fontSize: 20.0),),  
-                  ),  
-                ),  
+                  child: ElevatedButton(
+                    onPressed: () async {
+                      // test the app
+                      User? user = await loginUsingEmailPassword(
+                          email: _emailController.text,
+                          password: _passwordController.text,
+                          context: context);
+                      
+                      // ignore: avoid_print
+                      print(user);
+                      if(user != null){
+                        
+                        // ignore: use_build_context_synchronously
+                        Navigator.of(context).pushReplacement(MaterialPageRoute(builder: (context)=> const Profile(),),);
+                      }
+                    },
+                    child: const Text(
+                      'Log in',
+                      style: TextStyle(fontSize: 20.0),
+                    ),
+                  ),
+                ),
               ),
 
               //sign in
@@ -117,19 +155,21 @@ class _LoginPageState extends State<LoginPage> {
                   ),
                   TextButton(
                     style: TextButton.styleFrom(
-                      textStyle: const TextStyle(fontSize: 15, color: Colors.black,),
+                      textStyle: const TextStyle(
+                        fontSize: 15,
+                        color: Colors.black,
+                      ),
                     ),
-                      onPressed: ()=> Navigator.push(
-                        context,
-                        MaterialPageRoute(
-                          builder: (context) => const Profile(),
-                        ),
-                      ), 
-                      child: const Text('Sign In'),
+                    onPressed: () => Navigator.push(
+                      context,
+                      MaterialPageRoute(
+                        builder: (context) => const Profile(),
+                      ),
+                    ),
+                    child: const Text('Sign In'),
                   ),
                 ],
               ),
-
             ],
           ),
         ),
