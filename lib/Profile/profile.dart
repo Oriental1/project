@@ -121,7 +121,7 @@ class _ProfiledetailsState extends State<Profiledetails> {
                     child: TextField(
                       decoration: InputDecoration(
                         border: InputBorder.none,
-                        hintText: 'e-mail',
+                        hintText: 'E-mail',
                       ),
                     ),
                   ),

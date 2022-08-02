@@ -118,7 +118,7 @@ class _ProfileState extends State<Profile> {
                   child: TextField(
                     decoration: InputDecoration(
                       border: InputBorder.none,
-                      hintText: 'e-mail',
+                      hintText: 'E-mail',
                     ),
                   ),
                 ),
@@ -190,7 +190,7 @@ class _ProfileState extends State<Profile> {
                     onPressed: () async {
                       login();
                     },
-                    child: const Text('Log in',),
+                    child: const Text('Log In',),
                   ),
                 ],
             ),
@@ -203,7 +203,7 @@ class _ProfileState extends State<Profile> {
                 signin();
               },
               child: const Text(
-                'Sign up',
+                'Sign Up',
                 style: TextStyle(fontSize: 20.0),
               ),
             ),

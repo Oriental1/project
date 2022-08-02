@@ -27,7 +27,7 @@ class FormScreenState extends State<FormScreen> {
       decoration: const InputDecoration(labelText: 'Username'),
       validator: (value) {
         if (value!.isEmpty) {
-          return 'UserName is Required';
+          return 'UserName is Required.';
         }
         return null;
       },
@@ -46,7 +46,7 @@ class FormScreenState extends State<FormScreen> {
         }
 
         if (value.isEmpty) {
-          return 'Service Center UserName is Required';
+          return 'Service Center UserName is Required.';
         }
         return null;
       },
@@ -59,12 +59,12 @@ class FormScreenState extends State<FormScreen> {
   //Contact
   Widget _buildPhoneNumber() {
     return TextFormField(
-      decoration: const InputDecoration(labelText: 'Phone number'),
+      decoration: const InputDecoration(labelText: 'Phone number.'),
       keyboardType: TextInputType.phone,
       maxLength: 10,
       validator: (value) {
         if (value!.isEmpty) {
-          return 'Phone number is Required';
+          return 'Phone number is Required.';
         }
 
         return null;
@@ -82,7 +82,7 @@ class FormScreenState extends State<FormScreen> {
       keyboardType: TextInputType.visiblePassword,
       validator: (value) {
         if (value!.isEmpty) {
-          return 'Type of Furniture field is Required';
+          return 'Type of Furniture field is Required.';
         }
 
         return null;
@@ -101,7 +101,7 @@ class FormScreenState extends State<FormScreen> {
       maxLength: 3,
       validator: (value) {
         if (value!.isEmpty) {
-          return 'Please suggest an expected number of days to be finished';
+          return 'Please suggest an expected number of days to be finished.';
         }
         return null;
       },
@@ -118,7 +118,7 @@ class FormScreenState extends State<FormScreen> {
       keyboardType: TextInputType.visiblePassword,
       validator: (value) {
         if (value!.isEmpty) {
-          return 'Please suggest about your visit';
+          return 'Please suggest about your visit.';
         }
         return null;
       },
