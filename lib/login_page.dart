@@ -3,6 +3,7 @@
 import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/material.dart';
 import 'package:project/ProfileDetails/entreprofile.dart';
+import 'package:project/home/home.dart';
 
 class LoginPage extends StatefulWidget {
   const LoginPage({Key? key}) : super(key: key);
@@ -12,25 +13,17 @@ class LoginPage extends StatefulWidget {
 }
 
 class _LoginPageState extends State<LoginPage> {
-//
+  final FirebaseAuth auth = FirebaseAuth.instance;
+  //login func
+  login() async {
+    Navigator.pushReplacement(
+        context, MaterialPageRoute(builder: (context) => const Home()));
+  }
 
-//login function
-  static Future<User?> loginUsingEmailPassword(
-      {required String email,
-      required String password,
-      required BuildContext context}) async {
-    FirebaseAuth auth = FirebaseAuth.instance;
-    User? user;
-    try {
-      UserCredential userCredential = await auth.signInWithEmailAndPassword(
-          email: email, password: password);
-      user = userCredential.user;
-    } on FirebaseAuthException catch (e) {
-      if (e.code == "user-not-found") {
-        print("No User found for that email");
-      }
-    }
-    return user;
+  //sigin finc
+  sign() async {
+    Navigator.pushReplacement(
+        context, MaterialPageRoute(builder: (context) => const Profile()));
   }
 
   @override
@@ -120,18 +113,7 @@ class _LoginPageState extends State<LoginPage> {
                   child: ElevatedButton(
                     onPressed: () async {
                       // test the app
-                      User? user = await loginUsingEmailPassword(
-                          email: _emailController.text,
-                          password: _passwordController.text,
-                          context: context);
-                      
-                      // ignore: avoid_print
-                      print(user);
-                      if(user != null){
-                        
-                        // ignore: use_build_context_synchronously
-                        Navigator.of(context).pushReplacement(MaterialPageRoute(builder: (context)=> const Profile(),),);
-                      }
+                      login();
                     },
                     child: const Text(
                       'Log in',
@@ -158,13 +140,10 @@ class _LoginPageState extends State<LoginPage> {
                         color: Colors.black,
                       ),
                     ),
-                    onPressed: () => Navigator.push(
-                      context,
-                      MaterialPageRoute(
-                        builder: (context) => const Profile(),
-                      ),
-                    ),
-                    child: const Text('Sign In'),
+                    onPressed: () async {
+                      sign();
+                    },
+                    child: const Text('Sign Up'),
                   ),
                 ],
               ),

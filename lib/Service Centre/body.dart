@@ -39,7 +39,7 @@ Widget chat(hc) {
                         Text(
                           e.name == null ? '' : e.name!,
                           style: const TextStyle(
-                              fontSize: 20.0, fontWeight: FontWeight.bold),
+                              fontSize: 18.0, fontWeight: FontWeight.bold),
                         ),
                         const SizedBox(
                           height: 5.0,

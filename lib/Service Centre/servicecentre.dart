@@ -1,10 +1,22 @@
+import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 import 'package:project/Service%20Centre/body.dart';
+import 'package:project/home/home.dart';
 import 'package:project/model/user_data.dart';
 
-class Service extends StatelessWidget {
+class Service extends StatefulWidget {
   const Service({Key? key}) : super(key: key);
+  _ServiceState createState() => _ServiceState();
+}
+
+class _ServiceState extends State<Service> {
+  final FirebaseAuth auth = FirebaseAuth.instance;
+  //Go to home
+  home() async {
+    Navigator.pushReplacement(
+        context, MaterialPageRoute(builder: (context) => const Home()));
+  }
 
   @override
   Widget build(BuildContext context) {
@@ -14,26 +26,14 @@ class Service extends StatelessWidget {
       appBar: AppBar(
         title: const Text(
           'Service Centre',
-          style: TextStyle(fontSize: 28, fontWeight: FontWeight.w500), 
+          style: TextStyle(fontSize: 28, fontWeight: FontWeight.w500),
         ),
         elevation: 0,
-        actions: <Widget>[
-          IconButton(
-            icon: const Icon(
-              Icons.search,
-              color: Colors.black,
-            ),
-            onPressed: () {
-              // do something
-            },
-          )
-        ],
       ),
       body: chat(hc),
     );
   }
 }
-
 
 class HomeController extends GetxController {
   List<UserData> data = [
@@ -63,7 +63,7 @@ class HomeController extends GetxController {
         profilePic:
             'https://images.unsplash.com/photo-1586023492125-27b2c045efd7?ixlib=rb-1.2.1&ixid=MnwxMjA3fDB8MHxzZWFyY2h8N3x8ZnVybml0dXJlfGVufDB8fDB8fA%3D%3D&auto=format&fit=crop&w=1000&q=60'),
     UserData(
-        name: "Mayu's Wood Repairing",
+        name: "Mayu's Woods",
         contact: 24656458789,
         profilePic:
             'https://images.unsplash.com/photo-1538688525198-9b88f6f53126?ixlib=rb-1.2.1&ixid=MnwxMjA3fDB8MHxzZWFyY2h8OHx8ZnVybml0dXJlfGVufDB8fDB8fA%3D%3D&auto=format&fit=crop&w=1000&q=60'),
@@ -73,7 +73,7 @@ class HomeController extends GetxController {
         profilePic:
             'https://images.unsplash.com/photo-1616486338812-3dadae4b4ace?ixlib=rb-1.2.1&ixid=MnwxMjA3fDB8MHxzZWFyY2h8OXx8ZnVybml0dXJlfGVufDB8fDB8fA%3D%3D&auto=format&fit=crop&w=1000&q=60'),
     UserData(
-        name: 'Stephan Seeber Upholstery',
+        name: 'Stephan Upholstery',
         contact: 3265764885,
         profilePic:
             'https://images.unsplash.com/photo-1550226891-ef816aed4a98?ixlib=rb-1.2.1&ixid=MnwxMjA3fDB8MHxzZWFyY2h8MTF8fGZ1cm5pdHVyZXxlbnwwfHwwfHw%3D&auto=format&fit=crop&w=1000&q=60'),
@@ -84,5 +84,3 @@ class HomeController extends GetxController {
             'https://images.unsplash.com/photo-1556228453-efd6c1ff04f6?ixlib=rb-1.2.1&ixid=MnwxMjA3fDB8MHxzZWFyY2h8MTJ8fGZ1cm5pdHVyZXxlbnwwfHwwfHw%3D&auto=format&fit=crop&w=1000&q=60'),
   ];
 }
-
-

@@ -132,7 +132,9 @@ class FormScreenState extends State<FormScreen> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      appBar: AppBar(title: const Text("Service Center Form")),
+      appBar: AppBar(
+        title: const Text("Service Center Form"),
+      ),
       body: SingleChildScrollView(
         child: Container(
           margin: const EdgeInsets.all(24),

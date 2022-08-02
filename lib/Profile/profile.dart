@@ -13,23 +13,23 @@ class _ProfiledetailsState extends State<Profiledetails> {
     return Scaffold(
       resizeToAvoidBottomInset: false,
       backgroundColor: Colors.grey[300],
-      appBar: AppBar(),
+      appBar: AppBar(
+        title: const Text(
+          "My Profile",
+          style: TextStyle(
+            fontWeight: FontWeight.bold,
+            fontSize: 28,
+          ),
+        ),
+      ),
       body: SafeArea(
         child: Center(
           child: Column(
             mainAxisAlignment: MainAxisAlignment.start,
             children: [
               const SizedBox(height: 20),
-              const Text(
-                'My Profile',
-                style: TextStyle(
-                  fontWeight: FontWeight.bold,
-                  fontSize: 40,
-                ),
-              ),
 
-              const SizedBox(height: 30),
-
+              //profile photo
               const CircleAvatar(
                 radius: 50.0,
                 backgroundImage: NetworkImage(
