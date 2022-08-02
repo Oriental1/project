@@ -33,7 +33,7 @@ class _ProfiledetailsState extends State<Profiledetails> {
               const CircleAvatar(
                 radius: 50.0,
                 backgroundImage: NetworkImage(
-                    "https://cdn.pixabay.com/photo/2022/05/18/12/04/flower-7205105__340.jpg"),
+                    "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcT-BiIorxpeD_vgAzBTgpx9vd6EQezMODouWZWDbv8wY55bX4z56X4RuBEdeVbrYaCyxkc&usqp=CAU"),
                 backgroundColor: Colors.transparent,
               ),
 

@@ -31,8 +31,7 @@ class _HomePageState extends State<Home> {
           children: [
             const CircleAvatar(
               radius: 80, // Image radius
-              backgroundImage: NetworkImage(
-                  "https://static-cse.canva.com/blob/903205/1600w-EW4cggXkgbc.jpg"),
+              backgroundImage: NetworkImage("https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcT-BiIorxpeD_vgAzBTgpx9vd6EQezMODouWZWDbv8wY55bX4z56X4RuBEdeVbrYaCyxkc&usqp=CAU"),
             ),
             TextButton(
               style: TextButton.styleFrom(
