@@ -14,7 +14,7 @@ Widget chat(hc) {
                 bottom: 5,
               ),
               decoration: const BoxDecoration(
-                color: Colors.blueAccent,
+                color: Color.fromARGB(255, 148, 180, 235),
                 borderRadius: BorderRadius.all(Radius.circular(10)),
               ),
               child: Row(
